@@ -3,14 +3,15 @@
 \ProvidesClass{notunprofessional}[2023/05/05 Custom CV class]
 \LoadClass{article}
 
+\RequirePackage[sfdefault]{carlito}
 \RequirePackage{titlesec}
 \titleformat{\section}
-  {\Large\scshape\raggedright}
+  {\Large\raggedright}
   {}{0em}
   {}
   [\titlerule]
 \titleformat{\subsection}
-  {\large\scshape\raggedright}
+  {\large\raggedright}
   {}{0em}
   {}
 
