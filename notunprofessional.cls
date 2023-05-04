@@ -9,6 +9,10 @@
 \RequirePackage[dvipsnames]{xcolor}
 \setlength{\parindent}{0cm}
 \RequirePackage{titlesec}
+\DeclareOption*{
+  \PassOptionsToClass{\CurrentOption}{article}
+}
+
 \titleformat{\section}
   {\Large\raggedright\color{Maroon}}
   {}{0em}
@@ -18,13 +22,18 @@
   {}{0em}
   {}
 
-\newcommand{\nupname}[1]{
-	\flushleft{\LARGE{\color{Maroon}\uppercase{#1}}}
-}
-\newcommand{\nuptitle}[1]{
-	\flushleft{\normalsize{\uppercase{#1}}}
+\newcommand{\nupname}{NAME}
+\newcommand{\nuptitle}{TITLE}
+\newcommand{\nupsummary}{SUMMARY}
+
+\newcommand{\nupprofile}[3]{
+  \renewcommand{\nupname}{#1}
+  \renewcommand{\nuptitle}{#2}
+  \renewcommand{\nupsummary}{#3}
 }
 
-\DeclareOption*{
-  \PassOptionsToClass{\CurrentOption}{article}
+\newcommand{\makecv}{
+  \flushleft{\LARGE{\color{Maroon}\MakeUppercase{\nupname}}}
+  \flushleft{\MakeUppercase{\nuptitle}}
+  \flushleft{\nupsummary}
 }
