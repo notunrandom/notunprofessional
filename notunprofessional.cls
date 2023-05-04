@@ -8,19 +8,9 @@
 \RequirePackage[sfdefault]{carlito}
 \RequirePackage[dvipsnames]{xcolor}
 \setlength{\parindent}{0cm}
-\RequirePackage{titlesec}
 \DeclareOption*{
   \PassOptionsToClass{\CurrentOption}{article}
 }
-
-\titleformat{\section}
-  {\Large\raggedright\color{Maroon}}
-  {}{0em}
-  {\MakeUppercase}
-\titleformat{\subsection}
-  {\large\raggedright}
-  {}{0em}
-  {}
 
 \newcommand{\nupname}{NAME}
 \newcommand{\nuptitle}{TITLE}
@@ -32,8 +22,11 @@
   \renewcommand{\nupsummary}{#3}
 }
 
-\newcommand{\makecv}{
+\newcommand{\makeprofile}{
   \flushleft{\LARGE{\color{Maroon}\MakeUppercase{\nupname}}}
   \flushleft{\MakeUppercase{\nuptitle}}
   \flushleft{\nupsummary}
 }
+
+\newcommand{\makecv}{
+	\makeprofile}
