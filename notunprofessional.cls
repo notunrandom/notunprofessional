@@ -4,11 +4,12 @@
 \LoadClass{article}
 
 \RequirePackage[sfdefault]{carlito}
+\RequirePackage{xcolor}
 \RequirePackage{titlesec}
 \titleformat{\section}
-  {\Large\raggedright}
+  {\Large\raggedright\color{red}}
   {}{0em}
-  {}
+  {\MakeUppercase}
   [\titlerule]
 \titleformat{\subsection}
   {\large\raggedright}
