@@ -1,8 +1,9 @@
 % Copyright notunrandom. All rights reserved.
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{notunprofessional}[2023/05/05 Custom CV class]
-\LoadClass[a4paper]{article}
+\LoadClass{article}
 
+\RequirePackage[utf8]{inputenc}
 \RequirePackage[T1]{fontenc}
 \RequirePackage[sfdefault]{carlito}
 \RequirePackage[dvipsnames]{xcolor}
@@ -22,4 +23,8 @@
 }
 \newcommand{\nuptitle}[1]{
 	\flushleft{\normalsize{\uppercase{#1}}}
+}
+
+\DeclareOption*{
+  \PassOptionsToClass{\CurrentOption}{article}
 }
