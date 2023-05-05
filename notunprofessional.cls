@@ -8,6 +8,7 @@
 \RequirePackage[dvipsnames]{xcolor}
 \RequirePackage{tikz}
 \RequirePackage{fontawesome5}
+\RequirePackage{tabulary}
 
 \newcommand{\nupcolor}{\color{Maroon}}
 \DeclareOption{teal}{\renewcommand{\nupcolor}{\color{teal}}}
@@ -48,12 +49,14 @@
 
 \newcommand{\makecontact}{
   \begin{flushleft}
-    \large{\nupcolor\MakeUppercase{Contact}}\\
-    \vspace{1em}
-    \faIcon{map-marker-alt} \nuplocation\\
-    \faIcon{at} \nupemail\\
-    \faIcon{mobile-alt} \nupmobile\\
-    \faIcon{linkedin} linkedin.com/\nuplinkedin\\
+  \large{\nupcolor\MakeUppercase{Contact}}\\
+  \vspace{1em}
+  \begin{tabulary}{\textwidth}{CL}
+      \faIcon{map-marker-alt} & \nuplocation \\
+      \faIcon{at} & \nupemail \\
+      \faIcon{mobile-alt} & \nupmobile \\
+      \faIcon{linkedin} & linkedin.com/\nuplinkedin \\
+    \end{tabulary}
   \end{flushleft}
 }
 
@@ -76,7 +79,7 @@
 \newcommand{\makesidebar}{
   \linespread{1.2}
   \vspace{1cm}
-  \center{\includegraphics[width=3cm]{\jobname.png}}
+  \center{\includegraphics[width=3cm]{\jobname.png}}\\
   \vspace{1cm}
   \makecontact
   \vspace{0.5cm}
