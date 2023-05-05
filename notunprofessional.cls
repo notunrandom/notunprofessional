@@ -34,7 +34,7 @@
 
 \newcommand{\makesidebar}{
   \vspace{1cm}
-  \center{\includegraphics[width=3cm]{br.png}}
+  \center{\includegraphics[width=3cm]{\jobname.png}}
   \flushleft{Hello world}
 }
 
