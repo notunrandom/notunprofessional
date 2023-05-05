@@ -1,14 +1,16 @@
 % Copyright notunrandom. All rights reserved.
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{notunprofessional}[2023/05/05 Custom CV class]
-\LoadClass[11pt, a4paper]{article}
 
 \RequirePackage[utf8]{inputenc}
 \RequirePackage[sfdefault]{carlito}
 \RequirePackage[dvipsnames]{xcolor}
 \RequirePackage{graphicx}
 
-%\DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
+\ProcessOptions\relax
+
+\LoadClass{article}
 
 \setlength{\parindent}{0cm}
 
