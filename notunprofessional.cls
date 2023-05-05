@@ -7,6 +7,8 @@
 \RequirePackage[dvipsnames]{xcolor}
 \RequirePackage{graphicx}
 
+\newcommand{\nupcolor}{\color{Maroon}}
+\DeclareOption{teal}{\renewcommand{\nupcolor}{\color{teal}}}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
 \ProcessOptions\relax
 
@@ -25,7 +27,7 @@
 }
 
 \newcommand{\makeprofile}{
-  \flushleft{\LARGE{\color{Maroon}\MakeUppercase{\nupname}}}
+  \flushleft{\LARGE{\nupcolor\MakeUppercase{\nupname}}}
   \flushleft{\MakeUppercase{\nuptitle}}
   \flushleft{\nupsummary}
 }
