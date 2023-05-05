@@ -3,9 +3,10 @@
 \ProvidesClass{notunprofessional}[2023/05/05 Custom CV class]
 
 \RequirePackage[utf8]{inputenc}
+\RequirePackage[T1]{fontenc}
 \RequirePackage[sfdefault]{carlito}
 \RequirePackage[dvipsnames]{xcolor}
-\RequirePackage{graphicx}
+\RequirePackage{tikz}
 \RequirePackage{fontawesome5}
 
 \newcommand{\nupcolor}{\color{Maroon}}
@@ -24,6 +25,7 @@
 \newcommand{\nupemail}{EMAIL}
 \newcommand{\nupmobile}{MOBILE}
 \newcommand{\nuplinkedin}{LINKEDIN}
+\newcommand{\nupsk}{SKILL/2}
 
 \newcommand{\nupprofile}[3]{
   \renewcommand{\nupname}{#1}
@@ -36,6 +38,7 @@
   \renewcommand{\nupmobile}{#3}
   \renewcommand{\nuplinkedin}{#4}
 }
+\newcommand{\nupskills}[1]{\renewcommand{\nupsk}{#1}}
 
 \newcommand{\makeprofile}{
   \flushleft{\LARGE{\nupcolor\MakeUppercase{\nupname}}}
@@ -44,18 +47,40 @@
 }
 
 \newcommand{\makecontact}{
-  \flushleft{\large{\nupcolor\MakeUppercase{Contact}}}\vspace{1em}
-  \flushleft{\faIcon{map-marker-alt} \nuplocation}
-  \flushleft{\faIcon{at} \nupemail}
-  \flushleft{\faIcon{mobile-alt} \nupmobile}
-  \flushleft{\faIcon{linkedin} linkedin.com/\nuplinkedin}
+  \begin{flushleft}
+    \large{\nupcolor\MakeUppercase{Contact}}\\
+    \vspace{1em}
+    \faIcon{map-marker-alt} \nuplocation\\
+    \faIcon{at} \nupemail\\
+    \faIcon{mobile-alt} \nupmobile\\
+    \faIcon{linkedin} linkedin.com/\nuplinkedin\\
+  \end{flushleft}
 }
 
+\newcommand{\makeskills}{
+  \begin{flushleft}
+    \large{\nupcolor\MakeUppercase{Skills}}\\
+    \vspace{1em}
+    \foreach \x\y in \nupsk {
+      \x\hfill\small
+      \foreach \i in {1,2,3,4,5} {
+        \ifnum\i>\y
+          \faIcon[regular]{star}
+        \else
+          \faIcon{star}
+        \fi
+      }\\ 
+    }
+  \end{flushleft}
+}
 \newcommand{\makesidebar}{
+  \linespread{1.2}
   \vspace{1cm}
   \center{\includegraphics[width=3cm]{\jobname.png}}
   \vspace{1cm}
   \makecontact
+  \vspace{0.5cm}
+  \makeskills
 }
 
 \newcommand{\makecv}{
