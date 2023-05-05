@@ -29,7 +29,8 @@
 }
 
 \newcommand{\makesidebar}{
-  \includegraphics[width=3cm]{br.png}
+  \vspace{1cm}
+  \center{\includegraphics[width=3cm]{br.png}}
   \flushleft{Hello world}
 }
 
@@ -37,6 +38,8 @@
   \colorbox{lightgray}{
     \begin{minipage}{0.3\textwidth}\makesidebar\end{minipage}
   }
+  \hspace{0.5cm}
   \begin{minipage}{0.7\textwidth}\makeprofile\end{minipage}
 }
 
+\RequirePackage[left=1.5cm,top=2cm,right=1.5cm,bottom=2cm,nohead,nofoot]{geometry}
