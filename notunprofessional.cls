@@ -1,16 +1,16 @@
 % Copyright notunrandom. All rights reserved.
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{notunprofessional}[2023/05/05 Custom CV class]
-\LoadClass{article}
+\LoadClass[11pt, a4paper]{article}
 
 \RequirePackage[utf8]{inputenc}
-\RequirePackage[T1]{fontenc}
 \RequirePackage[sfdefault]{carlito}
 \RequirePackage[dvipsnames]{xcolor}
+\RequirePackage{graphicx}
+
+%\DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
+
 \setlength{\parindent}{0cm}
-\DeclareOption*{
-  \PassOptionsToClass{\CurrentOption}{article}
-}
 
 \newcommand{\nupname}{NAME}
 \newcommand{\nuptitle}{TITLE}
@@ -28,5 +28,15 @@
   \flushleft{\nupsummary}
 }
 
+\newcommand{\makesidebar}{
+  \includegraphics[width=3cm]{br.png}
+  \flushleft{Hello world}
+}
+
 \newcommand{\makecv}{
-	\makeprofile}
+  \colorbox{lightgray}{
+    \begin{minipage}{0.3\textwidth}\makesidebar\end{minipage}
+  }
+  \begin{minipage}{0.7\textwidth}\makeprofile\end{minipage}
+}
+
