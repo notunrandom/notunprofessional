@@ -27,6 +27,7 @@
 \newcommand{\nupmobile}{MOBILE}
 \newcommand{\nuplinkedin}{LINKEDIN}
 \newcommand{\nupsk}{SKILL/2}
+\newcommand{\nuplang}{LANGUAGE/2}
 
 \newcommand{\nupprofile}[3]{
   \renewcommand{\nupname}{#1}
@@ -40,6 +41,7 @@
   \renewcommand{\nuplinkedin}{#4}
 }
 \newcommand{\nupskills}[1]{\renewcommand{\nupsk}{#1}}
+\newcommand{\nuplanguages}[1]{\renewcommand{\nuplang}{#1}}
 
 \newcommand{\makeprofile}{
   \flushleft{\LARGE{\nupcolor\MakeUppercase{\nupname}}}
@@ -60,11 +62,11 @@
   \end{flushleft}
 }
 
-\newcommand{\makeskills}{
+\newcommand{\makeskills}[2]{
   \begin{flushleft}
-    \large{\nupcolor\MakeUppercase{Skills}}\\
+    \large{\nupcolor\MakeUppercase{#1}}\\
     \vspace{1em}
-    \foreach \x\y in \nupsk {
+    \foreach \x\y in #2 {
       \x\hfill\small
       \foreach \i in {1,2,3,4,5} {
         \ifnum\i>\y
@@ -83,7 +85,9 @@
   \vspace{1cm}
   \makecontact
   \vspace{0.5cm}
-  \makeskills
+  \makeskills{Skills}{\nupsk}
+  \vspace{0.5cm}
+  \makeskills{Languages}{\nuplang}
 }
 
 \newcommand{\makecv}{
