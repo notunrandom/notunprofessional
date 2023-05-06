@@ -31,6 +31,7 @@
 \newcommand{\nuplang}{LANGUAGE/2}
 \newcommand{\nupfpage}{}
 \newcommand{\nupexp}{}
+\newcommand{\nupedu}{}
 
 \newcommand{\nupprofile}[3]{
   \renewcommand{\nupname}{#1}
@@ -47,11 +48,14 @@
 \newcommand{\nuplanguages}[1]{\renewcommand{\nuplang}{#1}}
 \newcommand{\nupfirstpage}[1]{\renewcommand{\nupfpage}{#1}}
 \newcommand{\nupexperiencesection}[1]{\renewcommand{\nupexp}{#1}}
+\newcommand{\nupeducationsection}[1]{\renewcommand{\nupedu}{#1}}
 
-\newcommand{\nupexperience}[5]{
-	\\ \MakeUppercase{#3} & \MakeUppercase{#4} \\
-	#1 --- #2 & #5 \\
+\newcommand{\nupexperience}[4]{
+	\\ \MakeUppercase{#2} & \MakeUppercase{#3} \\
+	#1 & #4 \\
 }
+\newcommand{\nupeducation}[4]{\nupexperience{#1}{#2}{#3}{#4}}
+
 \newcommand{\makeprofile}{
   \flushleft{\LARGE{\nupcolor\MakeUppercase{\nupname}}}
   \flushleft{\MakeUppercase{\nuptitle}}
@@ -107,11 +111,12 @@
 }
 
 \newcommand{\makeexperience}{
-  \setlength\tymin{4cm}
-  \begin{tabulary}{\textwidth}{RL}
-    & \large{\nupcolor\MakeUppercase{Experience}} \\ 
-    \nupexp
-  \end{tabulary}
+  & \large{\nupcolor\MakeUppercase{Experience}} \\ 
+  \nupexp 
+}
+\newcommand{\makeeducation}{
+  & \large{\nupcolor\MakeUppercase{Education}} \\ 
+  \nupedu
 }
 \newcommand{\makecv}{
   \colorbox{lightgray}{
@@ -120,7 +125,12 @@
   \hspace{0.5cm}
   \begin{minipage}[t]{0.7\textwidth}\makeprofile\makefirstpage\end{minipage}
   \newpage
+  \setlength\tymin{4cm}
+  \begin{tabulary}{\textwidth}{RL}
   \makeexperience
+  \\
+  \makeeducation
+  \end{tabulary}
 }
 
 \RequirePackage[left=1.5cm,top=2cm,right=1.5cm,bottom=2cm,nohead,nofoot]{geometry}
