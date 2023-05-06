@@ -30,6 +30,7 @@
 \newcommand{\nupsk}{SKILL/2}
 \newcommand{\nuplang}{LANGUAGE/2}
 \newcommand{\nupfpage}{}
+\newcommand{\nupexp}{}
 
 \newcommand{\nupprofile}[3]{
   \renewcommand{\nupname}{#1}
@@ -45,7 +46,12 @@
 \newcommand{\nupskills}[1]{\renewcommand{\nupsk}{#1}}
 \newcommand{\nuplanguages}[1]{\renewcommand{\nuplang}{#1}}
 \newcommand{\nupfirstpage}[1]{\renewcommand{\nupfpage}{#1}}
+\newcommand{\nupexperiencesection}[1]{\renewcommand{\nupexp}{#1}}
 
+\newcommand{\nupexperience}[5]{
+	\\ \MakeUppercase{#3} & \MakeUppercase{#4} \\
+	#1 --- #2 & #5 \\
+}
 \newcommand{\makeprofile}{
   \flushleft{\LARGE{\nupcolor\MakeUppercase{\nupname}}}
   \flushleft{\MakeUppercase{\nuptitle}}
@@ -100,12 +106,21 @@
   \nupfpage
 }
 
+\newcommand{\makeexperience}{
+  \setlength\tymin{4cm}
+  \begin{tabulary}{\textwidth}{RL}
+    & \large{\nupcolor\MakeUppercase{Experience}} \\ 
+    \nupexp
+  \end{tabulary}
+}
 \newcommand{\makecv}{
   \colorbox{lightgray}{
     \begin{minipage}[t][0.8\textheight]{0.3\textwidth}\makesidebar\end{minipage}
   }
   \hspace{0.5cm}
   \begin{minipage}[t]{0.7\textwidth}\makeprofile\makefirstpage\end{minipage}
+  \newpage
+  \makeexperience
 }
 
 \RequirePackage[left=1.5cm,top=2cm,right=1.5cm,bottom=2cm,nohead,nofoot]{geometry}
