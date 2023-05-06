@@ -110,13 +110,9 @@
   \nupfpage
 }
 
-\newcommand{\makeexperience}{
-  & \large{\nupcolor\MakeUppercase{Experience}} \\ 
-  \nupexp 
-}
-\newcommand{\makeeducation}{
-  & \large{\nupcolor\MakeUppercase{Education}} \\ 
-  \nupedu
+\newcommand{\makechronology}[2]{
+  & \large{\nupcolor\MakeUppercase{#1}} \\ 
+  #2
 }
 \newcommand{\makecv}{
   \colorbox{lightgray}{
@@ -127,9 +123,9 @@
   \newpage
   \setlength\tymin{4cm}
   \begin{tabulary}{\textwidth}{RL}
-  \makeexperience
+  \makechronology{Experience}{\nupexp}
   \\
-  \makeeducation
+  \makechronology{Education}{\nupedu}
   \end{tabulary}
 }
 
