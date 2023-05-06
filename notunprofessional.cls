@@ -70,7 +70,7 @@
     \large{\nupcolor\MakeUppercase{#1}}\\
     \vspace{1em}
     \foreach \x\y in #2 {
-      \x\hfill\small
+      \x\hfill\footnotesize
       \foreach \i in {1,2,3,4,5} {
         \ifnum\i>\y
           \faIcon[regular]{star}
