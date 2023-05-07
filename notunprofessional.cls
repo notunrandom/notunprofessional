@@ -21,7 +21,7 @@
 \setlength{\parindent}{0cm}
 
 \newcommand{\nupname}{NAME}
-\newcommand{\nuptitle}{TITLE}
+\newcommand{\nupjobtitle}{TITLE}
 \newcommand{\nupsummary}{SUMMARY}
 \newcommand{\nuplocation}{LOCATION}
 \newcommand{\nupemail}{EMAIL}
@@ -33,9 +33,13 @@
 \newcommand{\nupexp}{}
 \newcommand{\nupedu}{}
 
+\newcommand{\nuptitle}[1]{
+  \vspace{0.2cm}
+  {\large\nupcolor\MakeUppercase{#1} \par} 
+}
 \newcommand{\nupprofile}[3]{
   \renewcommand{\nupname}{#1}
-  \renewcommand{\nuptitle}{#2}
+  \renewcommand{\nupjobtitle}{#2}
   \renewcommand{\nupsummary}{#3}
 }
 \newcommand{\nupcontact}[4]{
@@ -57,44 +61,42 @@
 \newcommand{\nupeducation}[4]{\nupexperience{#1}{#2}{#3}{#4}}
 
 \newcommand{\makeprofile}{
-  \flushleft{\LARGE{\nupcolor\MakeUppercase{\nupname}}}
-  \flushleft{\MakeUppercase{\nuptitle}}
-  \flushleft{\nupsummary}
+  {\LARGE\nupcolor\MakeUppercase{\nupname} \par}
+  {\MakeUppercase{\nupjobtitle} \par}
+  \vspace{0.3cm}
+  {\nupsummary \par} 
+  \vspace{0.3cm}
 }
 
 \newcommand{\makecontact}{
-  \begin{flushleft}
-  \large{\nupcolor\MakeUppercase{Contact}}\\
-  \vspace{1em}
+  \nuptitle{Contact}
+  \vspace{0.3cm}
   \begin{tabulary}{\textwidth}{CL}
-      \faIcon{map-marker-alt} & \nuplocation \\
-      \faIcon{at} & \nupemail \\
-      \faIcon{mobile-alt} & \nupmobile \\
-      \faIcon{linkedin} & linkedin.com/\nuplinkedin \\
-    \end{tabulary}
-  \end{flushleft}
+    \faIcon{map-marker-alt} & \nuplocation \\
+    \faIcon{at} & \nupemail \\
+    \faIcon{mobile-alt} & \nupmobile \\
+    \faIcon{linkedin} & linkedin.com/\nuplinkedin \\
+  \end{tabulary}
 }
 
 \newcommand{\makeskills}[2]{
-  \begin{flushleft}
-    \large{\nupcolor\MakeUppercase{#1}}\\
-    \vspace{1em}
-    \foreach \x\y in #2 {
-      \x\hfill\footnotesize
-      \foreach \i in {1,2,3,4,5} {
-        \ifnum\i>\y
-          \faIcon[regular]{star}
-        \else
-          \faIcon{star}
-        \fi
-      }\\ 
-    }
-  \end{flushleft}
+  \nuptitle{#1}
+  \vspace{0.3cm}
+  {\foreach \x\y in #2 {
+    \x \hfill
+    {\tiny \foreach \i in {1,2,3,4,5} {
+      \ifnum\i>\y
+        \faIcon[regular]{star}
+      \else
+        \faIcon{star}
+      \fi
+    }} \par}
+  }
 }
 \newcommand{\makesidebar}{
   \linespread{1.2}
   \vspace{1cm}
-  \center{\includegraphics[width=3cm]{\jobname.png}}\\
+  \begin{center}\includegraphics[width=3cm]{\jobname.png}\end{center}
   \vspace{1cm}
   \makecontact
   \vspace{0.5cm}
@@ -102,29 +104,25 @@
   \vspace{0.5cm}
   \makeskills{Languages}{\nuplang}
 }
-\newcommand{\nupskilltitle}[1]{
-  \flushleft{\large{\nupcolor\MakeUppercase{#1}}}
-}
 \newcommand{\makefirstpage}{
-  \newline
   \nupfpage
 }
 
 \newcommand{\makechronology}[2]{
-  & \large{\nupcolor\MakeUppercase{#1}} \\ 
+  \\ & \large{\nupcolor\MakeUppercase{#1}} \\ 
   #2
 }
 \newcommand{\makecv}{
+  \noindent
   \colorbox{lightgray}{
-    \begin{minipage}[t][0.8\textheight]{0.3\textwidth}\makesidebar\end{minipage}
+    \begin{minipage}[t][0.8\textheight]{6cm}\makesidebar\end{minipage}
   }
   \hspace{0.5cm}
-  \begin{minipage}[t]{0.7\textwidth}\makeprofile\makefirstpage\end{minipage}
+  \begin{minipage}[t]{11cm}\makeprofile\makefirstpage\end{minipage}
   \newpage
   \setlength\tymin{4cm}
   \begin{tabulary}{\textwidth}{RL}
   \makechronology{Experience}{\nupexp}
-  \\
   \makechronology{Education}{\nupedu}
   \end{tabulary}
 }
