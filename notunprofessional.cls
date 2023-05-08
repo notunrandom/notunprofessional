@@ -32,6 +32,7 @@
 \newcommand{\nupfpage}{}
 \newcommand{\nupexp}{}
 \newcommand{\nupedu}{}
+\newcommand{\nupcerts}{}
 
 \newcommand{\nuptitle}[1]{
   \vspace{0.2cm}
@@ -50,6 +51,7 @@
 }
 \newcommand{\nupskills}[1]{\renewcommand{\nupsk}{#1}}
 \newcommand{\nuplanguages}[1]{\renewcommand{\nuplang}{#1}}
+\newcommand{\nupcertificates}[1]{\renewcommand{\nupcerts}{#1}}
 \newcommand{\nupfirstpage}[1]{\renewcommand{\nupfpage}{#1}}
 \newcommand{\nupexperiencesection}[1]{\renewcommand{\nupexp}{#1}}
 \newcommand{\nupeducationsection}[1]{\renewcommand{\nupedu}{#1}}
@@ -93,6 +95,12 @@
     }} \par}
   }
 }
+\newcommand{\makecertificates}{
+  \nuptitle{Certificates}
+  \vspace{0.3cm}
+  {\nupcerts \par}
+}
+
 \newcommand{\makesidebar}{
   \linespread{1.2}
   \vspace{1cm}
@@ -103,6 +111,8 @@
   \makeskills{Skills}{\nupsk}
   \vspace{0.5cm}
   \makeskills{Languages}{\nuplang}
+  \vspace{0.5cm}
+  \makecertificates
 }
 \newcommand{\makefirstpage}{
   \nupfpage
