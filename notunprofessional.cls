@@ -86,7 +86,6 @@
 
 \newcommand{\makecontact}{
   \nuptitle{Contact}
-  \vspace{-0.4cm}
   \begin{flushleft}
   \begin{tabulary}{\textwidth}{CL}
     \faIcon{map-marker-alt} & \nuplocation \\
