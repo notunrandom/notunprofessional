@@ -9,6 +9,7 @@
 \RequirePackage{tikz}
 \RequirePackage{fontawesome5}
 \RequirePackage{tabulary}
+\RequirePackage{calc}
 
 \newcommand{\nupcolor}{\color{Maroon}}
 \DeclareOption{teal}{\renewcommand{\nupcolor}{\color{teal}}}
@@ -19,6 +20,19 @@
 \RequirePackage{enumitem}
 \setlist[itemize]{leftmargin=*}
 \setlength{\parindent}{0cm}
+\newlength{\sidebarheight}
+\setlength{\sidebarheight}{25cm}
+\newlength{\sidebarwidth}
+\setlength{\sidebarwidth}{5cm}
+\newlength{\profilewidth}
+\setlength{\profilewidth}{11.5cm}
+\newcommand{\addsidebarwidth}[1]{\setlength{\sidebarwidth}{\sidebarwidth + #1}}
+\newlength{\chronoleftmin}
+\setlength{\chronoleftmin}{3.5cm}
+\newlength{\chronototalwidth}
+\setlength{\chronototalwidth}{17.5cm}
+\newcommand{\addexperienceleftwidth}[1]{\setlength{\chronoleftmin}{\chronoleftmin + #1}}
+\pagestyle{empty}
 
 \newcommand{\nupname}{NAME}
 \newcommand{\nupjobtitle}{TITLE}
@@ -72,13 +86,15 @@
 
 \newcommand{\makecontact}{
   \nuptitle{Contact}
-  \vspace{0.3cm}
+  \vspace{-0.4cm}
+  \begin{flushleft}
   \begin{tabulary}{\textwidth}{CL}
     \faIcon{map-marker-alt} & \nuplocation \\
     \faIcon{at} & \nupemail \\
     \faIcon{mobile-alt} & \nupmobile \\
     \faIcon{linkedin} & linkedin.com/\nuplinkedin \\
   \end{tabulary}
+  \end{flushleft}
 }
 
 \newcommand{\makeskills}[2]{
@@ -116,6 +132,7 @@
 }
 \newcommand{\makefirstpage}{
   \nupfpage
+  { \vfill \hfill \colorbox{lightgray}{1} 2}
 }
 
 \newcommand{\makechronology}[2]{
@@ -125,16 +142,17 @@
 \newcommand{\makecv}{
   \noindent
   \colorbox{lightgray}{
-    \begin{minipage}[t][0.8\textheight]{6cm}\makesidebar\end{minipage}
+    \begin{minipage}[t][\sidebarheight]{\sidebarwidth}\makesidebar\end{minipage}
   }
   \hspace{0.5cm}
-  \begin{minipage}[t]{11cm}\makeprofile\makefirstpage\end{minipage}
+  \begin{minipage}[t][\sidebarheight]{\profilewidth}\makeprofile\makefirstpage\end{minipage}
   \newpage
-  \setlength\tymin{4cm}
-  \begin{tabulary}{\textwidth}{RL}
+  \setlength\tymin{\chronoleftmin}
+  \begin{tabulary}{\chronototalwidth}{RL}
   \makechronology{Experience}{\nupexp}
   \makechronology{Education}{\nupedu}
   \end{tabulary}
+  { \vfill \hfill 1 \colorbox{lightgray}{2}}
 }
 
-\RequirePackage[left=1.5cm,top=2cm,right=1.5cm,bottom=2cm,nohead,nofoot]{geometry}
+\RequirePackage[textwidth=18cm,textheight=26cm,centering]{geometry}
