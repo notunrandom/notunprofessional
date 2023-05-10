@@ -18,6 +18,8 @@
 
 \LoadClass{article}
 \RequirePackage{enumitem}
+\RequirePackage[hidelinks]{hyperref}
+
 \setlist[itemize]{leftmargin=*}
 \setlength{\parindent}{0cm}
 \newlength{\sidebarheight}
@@ -83,6 +85,9 @@
   {\nupsummary \par} 
   \vspace{0.3cm}
 }
+\newcommand{\makelinkedin}{
+  \href{https://www.linkedin.com/in/\nuplinkedin}{linkedin.com/in/\nuplinkedin} 
+}
 
 \newcommand{\makecontact}{
   \nuptitle{Contact}
@@ -91,7 +96,7 @@
     \faIcon{map-marker-alt} & \nuplocation \\
     \faIcon{at} & \nupemail \\
     \faIcon{mobile-alt} & \nupmobile \\
-    \faIcon{linkedin} & linkedin.com/\nuplinkedin \\
+    \faIcon{linkedin} & \makelinkedin \\
   \end{tabulary}
   \end{flushleft}
 }
