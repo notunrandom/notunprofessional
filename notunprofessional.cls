@@ -12,7 +12,25 @@
 \RequirePackage{calc}
 
 \newcommand{\nupcolor}{\color{Maroon}}
+\newcommand{\nupskillstitle}{Skills}
+\newcommand{\nuplangstitle}{Languages}
+\newcommand{\nupcertstitle}{Certificates}
+\newcommand{\nupedutitle}{Education}
+\newcommand{\nupexptitle}{Experience}
+\newcommand{\pageone}{{ \vfill \hfill \colorbox{lightgray}{1} 2}}
+\newcommand{\pagetwo}{{ \vfill \hfill 1 \colorbox{lightgray}{2}}}
 \DeclareOption{teal}{\renewcommand{\nupcolor}{\color{teal}}}
+\DeclareOption{french}{
+	\renewcommand{\nupskillstitle}{Compétences}
+	\renewcommand{\nuplangstitle}{Langues}
+	\renewcommand{\nupcertstitle}{Certifications}
+	\renewcommand{\nupedutitle}{Formation}
+	\renewcommand{\nupexptitle}{Expérience}
+}
+\DeclareOption{npages}{
+	\renewcommand{\pageone}{}
+	\renewcommand{\pagetwo}{}
+}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
 \ProcessOptions\relax
 
@@ -116,7 +134,7 @@
   }
 }
 \newcommand{\makecertificates}{
-  \nuptitle{Certificates}
+  \nuptitle{\nupcertstitle}
   \vspace{0.3cm}
   {\nupcerts \par}
 }
@@ -128,15 +146,15 @@
   \vspace{1cm}
   \makecontact
   \vspace{0.5cm}
-  \makeskills{Skills}{\nupsk}
+  \makeskills{\nupskillstitle}{\nupsk}
   \vspace{0.5cm}
-  \makeskills{Languages}{\nuplang}
+  \makeskills{\nuplangstitle}{\nuplang}
   \vspace{0.5cm}
   \makecertificates
 }
 \newcommand{\makefirstpage}{
   \nupfpage
-  { \vfill \hfill \colorbox{lightgray}{1} 2}
+  \pageone
 }
 
 \newcommand{\makechronology}[2]{
@@ -153,10 +171,10 @@
   \newpage
   \setlength\tymin{\chronoleftmin}
   \begin{tabulary}{\chronototalwidth}{RL}
-  \makechronology{Experience}{\nupexp}
-  \makechronology{Education}{\nupedu}
+  \makechronology{\nupexptitle}{\nupexp}
+  \makechronology{\nupedutitle}{\nupedu}
   \end{tabulary}
-  { \vfill \hfill 1 \colorbox{lightgray}{2}}
+  \pagetwo
 }
 
 \RequirePackage[textwidth=18cm,textheight=26cm,centering]{geometry}
