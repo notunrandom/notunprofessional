@@ -17,6 +17,7 @@
 \newcommand{\nupcertstitle}{Certificates}
 \newcommand{\nupedutitle}{Education}
 \newcommand{\nupexptitle}{Experience}
+\newcommand{\nupstatustitle}{Status}
 \newcommand{\pageone}{{ \vfill \hfill \colorbox{lightgray}{1} 2}}
 \newcommand{\pagetwo}{{ \vfill \hfill 1 \colorbox{lightgray}{2}}}
 \DeclareOption{teal}{\renewcommand{\nupcolor}{\color{teal}}}
@@ -26,6 +27,7 @@
 	\renewcommand{\nupcertstitle}{Certifications}
 	\renewcommand{\nupedutitle}{Formation}
 	\renewcommand{\nupexptitle}{Expérience}
+	\renewcommand{\nupstatustitle}{Etat Civil}
 }
 \DeclareOption{npages}{
 	\renewcommand{\pageone}{}
@@ -61,6 +63,9 @@
 \newcommand{\nupemail}{EMAIL}
 \newcommand{\nupmobile}{MOBILE}
 \newcommand{\nuplinkedin}{LINKEDIN}
+\newcommand{\nupcitiz}{CITIZENSHIP}
+\newcommand{\nuppermit}{PERMIT}
+\newcommand{\nupfamily}{FAMILY}
 \newcommand{\nupsk}{SKILL/2}
 \newcommand{\nuplang}{LANGUAGE/2}
 \newcommand{\nupfpage}{}
@@ -82,6 +87,11 @@
   \renewcommand{\nupemail}{#2}
   \renewcommand{\nupmobile}{#3}
   \renewcommand{\nuplinkedin}{#4}
+}
+\newcommand{\nupstatus}[3]{
+  \renewcommand{\nupcitiz}{#1}
+  \renewcommand{\nuppermit}{#2}
+  \renewcommand{\nupfamily}{#3}
 }
 \newcommand{\nupskills}[1]{\renewcommand{\nupsk}{#1}}
 \newcommand{\nuplanguages}[1]{\renewcommand{\nuplang}{#1}}
@@ -119,6 +129,17 @@
   \end{flushleft}
 }
 
+\newcommand{\makestatus}[1]{
+  \nuptitle{#1}
+  \begin{flushleft}
+  \begin{tabulary}{\textwidth}{CL}
+    \faIcon{globe} & \nupcitiz \\
+    \faIcon{stamp} & \nuppermit \\
+    \faIcon{users} & \nupfamily \\
+  \end{tabulary}
+  \end{flushleft}
+}
+
 \newcommand{\makeskills}[2]{
   \nuptitle{#1}
   \vspace{0.3cm}
@@ -145,6 +166,8 @@
   \begin{center}\includegraphics[width=3cm]{\jobname.png}\end{center}
   \vspace{1cm}
   \makecontact
+  \vspace{0.5cm}
+  \makestatus{\nupstatustitle}
   \vspace{0.5cm}
   \makeskills{\nupskillstitle}{\nupsk}
   \vspace{0.5cm}
